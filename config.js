@@ -78,3 +78,32 @@ window.HIDE_BUTTON_IDS = [];
     start();
   }
 })();
+// ====== OVERRIDES DE TRADUCCIONES (a nivel de diccionario) ======
+(function () {
+  if (!window.LANG_OVERRIDES) window.LANG_OVERRIDES = {};
+
+  // Cambios específicos en cada idioma
+  window.LANG_OVERRIDES.en = {
+    finalBoardTitle: "End Board",
+    exportFinalBoard: "Include End Board", // aparece en Export Options
+    reportIssueTitle: "Report an Issue / Suggestion",
+    reportIssueIntro: "Have a bug or suggestion? Send it as a GitHub Issue in your repository."
+  };
+
+  window.LANG_OVERRIDES.es = {
+    finalBoardTitle: "End Board", // incluso en español lo forzamos
+    exportFinalBoard: "Incluir End Board",
+    reportIssueTitle: "Reportar un problema / Sugerencia",
+    reportIssueIntro: "¿Tienes un bug o sugerencia? Envíalo como Issue de GitHub en tu repositorio."
+  };
+
+  // Hook de traducción (inyecta overrides si existen)
+  const originalT = window.t;
+  window.t = function (lang, key) {
+    if (window.LANG_OVERRIDES?.[lang]?.[key]) {
+      return window.LANG_OVERRIDES[lang][key];
+    }
+    return originalT ? originalT(lang, key) : key;
+  };
+})();
+
