@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Comunidad - Yu-Gi-Oh! Combo Maker</title>
+  <link rel="stylesheet" href="styles.css">
+  <script src="config.js"></script>
+</head>
+<body>
+  <header>
+    <h1>Comunidad de Combos</h1>
+    <p>Aquí podrás buscar arquetipos, ver y compartir guías creadas por otros usuarios.</p>
+  </header>
+  <main>
+    <section>
+      <input type="text" id="searchArchetype" placeholder="Buscar arquetipo...">
+      <button onclick="searchArchetype()">Buscar</button>
+    </section>
+    <section id="results">
+      <p>(Aquí se mostrarán los resultados de búsqueda. Más adelante se conectará a un backend o JSON con combos de la comunidad.)</p>
+    </section>
+  </main>
+  <script>
+    function searchArchetype() {
+      const term = document.getElementById('searchArchetype').value;
+      document.getElementById('results').innerHTML = `<p>Buscando guías para el arquetipo: <strong>${term}</strong> (funcionalidad futura)</p>`;
+    }
+  </script>
+</body>
+</html>
